@@ -1,7 +1,7 @@
 def get_max_calories_carried_by_elf() -> int:
     current_elf_calories = 0
     all_elf_calories = []
-    with open("./day1/day1_input.txt", encoding = 'utf-8') as calories_per_elf_file:
+    with open("./day1/day1_input.txt", encoding='utf-8') as calories_per_elf_file:
         lines = calories_per_elf_file.readlines()
         for line in lines:
             if line.strip():

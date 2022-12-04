@@ -1,6 +1,7 @@
 from enum import Enum
 
 from day2.day2 import PICK_TO_SHAPE_MAPPER, SHAPE_POINTS
+from utils.read_file import get_file_lines
 
 PICK_TO_WIN = {
     "ROCK": "PAPER",
@@ -38,12 +39,12 @@ def needed_pick_to_get_result(pick: str, result: str) -> str:
 
 def strategy_guide_total_points() -> int:
     total_points = 0
-    with open("./day2/day2_input.txt", encoding='utf-8') as strategy_guide:
-        lines = strategy_guide.readlines()
-        for line in lines:
-            round = line.strip().split(" ")
-            opponent_pick, expected_result = PICK_TO_SHAPE_MAPPER[round[0]], LETTER_TO_RESULT[round[1]]
-            total_points += _get_round_points(opponent_pick, expected_result)
+    lines = get_file_lines("./day2/day2_input.txt")
+    for line in lines:
+        elements_in_line = line.strip().split(" ")
+        opponent_pick, expected_result = PICK_TO_SHAPE_MAPPER[elements_in_line[0]], \
+            LETTER_TO_RESULT[elements_in_line[1]]
+        total_points += _get_round_points(opponent_pick, expected_result)
     return total_points
 
 
